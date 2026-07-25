@@ -59,27 +59,29 @@ export const DailyActivities: React.FC = () => {
           </p>
 
           {/* Category Filters */}
-          <div className="flex flex-wrap justify-center gap-2 pt-4">
-            {[
-              { id: 'all', label: t.activities.filterAll },
-              { id: 'assembly', label: t.activities.filterAssembly },
-              { id: 'class', label: t.activities.filterClass },
-              { id: 'meal', label: t.activities.filterMeal },
-              { id: 'sports', label: t.activities.filterSports },
-              { id: 'culture', label: t.activities.filterCulture },
-            ].map(tab => (
-              <button
-                key={tab.id}
-                onClick={() => setFilter(tab.id)}
-                className={`px-4 py-2 text-xs md:text-sm font-bold rounded-full transition-all ${
-                  filter === tab.id
-                    ? 'bg-emerald-700 text-white shadow-md shadow-emerald-700/20'
-                    : 'bg-white text-slate-700 border border-slate-200 hover:bg-emerald-50'
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
+          <div className="w-full overflow-x-auto flex md:justify-center scrollbar-none pb-2 pt-4">
+            <div className="flex flex-nowrap md:flex-wrap gap-2 px-4 md:px-0">
+              {[
+                { id: 'all', label: t.activities.filterAll },
+                { id: 'assembly', label: t.activities.filterAssembly },
+                { id: 'class', label: t.activities.filterClass },
+                { id: 'meal', label: t.activities.filterMeal },
+                { id: 'sports', label: t.activities.filterSports },
+                { id: 'culture', label: t.activities.filterCulture },
+              ].map(tab => (
+                <button
+                  key={tab.id}
+                  onClick={() => setFilter(tab.id)}
+                  className={`whitespace-nowrap px-4 py-2 text-xs md:text-sm font-bold rounded-full transition-all flex-shrink-0 ${
+                    filter === tab.id
+                      ? 'bg-emerald-700 text-white shadow-md shadow-emerald-700/20'
+                      : 'bg-white text-slate-700 border border-slate-200 hover:bg-emerald-50'
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 

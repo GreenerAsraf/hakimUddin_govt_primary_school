@@ -38,11 +38,11 @@ export const Navbar: React.FC = () => {
                 className="object-contain p-0.5"
               />
             </motion.div>
-            <div className="flex flex-col">
-              <span className="font-extrabold text-slate-800 text-xs sm:text-sm md:text-base leading-tight group-hover:text-emerald-700 transition-colors line-clamp-1">
+            <div className="flex flex-col min-w-0">
+              <span className="font-extrabold text-slate-800 text-xs sm:text-sm md:text-base leading-tight group-hover:text-emerald-700 transition-colors line-clamp-2 md:line-clamp-1 pr-2">
                 {t.schoolName}
               </span>
-              <span className="text-[11px] sm:text-xs text-emerald-600 font-medium tracking-wide">
+              <span className="text-[9px] sm:text-xs text-emerald-600 font-semibold tracking-wide mt-0.5">
                 {t.subTitle}
               </span>
             </div>
@@ -101,7 +101,7 @@ export const Navbar: React.FC = () => {
             {/* Language Toggle Mobile */}
             <button
               onClick={() => setLang(lang === 'bn' ? 'en' : 'bn')}
-              className="px-2.5 py-1 text-xs font-bold bg-emerald-100 text-emerald-800 rounded-full border border-emerald-300 flex items-center gap-1"
+              className="px-3 py-1.5 text-xs font-bold bg-emerald-600 text-white rounded-full border border-emerald-500 shadow-sm flex items-center gap-1.5 active:scale-95 transition-transform"
             >
               <Globe className="w-3.5 h-3.5" />
               {lang === 'bn' ? 'English' : 'বাংলা'}
@@ -109,9 +109,9 @@ export const Navbar: React.FC = () => {
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-xl bg-slate-100 text-slate-700 hover:text-emerald-700 hover:bg-emerald-50 transition-colors"
+              className="p-2.5 rounded-xl bg-slate-100 text-slate-700 hover:text-emerald-700 hover:bg-emerald-50 transition-colors"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5.5 h-5.5" /> : <Menu className="w-5.5 h-5.5" />}
             </button>
           </div>
 
@@ -125,15 +125,15 @@ export const Navbar: React.FC = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-white border-b border-slate-200 overflow-hidden px-4 pt-2 pb-6"
+            className="lg:hidden bg-white border-b border-slate-200 overflow-hidden px-4 pt-3 pb-8"
           >
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-1.5">
               {navItems.map((item, idx) => (
                 <a
                   key={idx}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="px-4 py-3 rounded-xl text-base font-semibold text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 transition-colors"
+                  className="px-4 py-3.5 rounded-xl text-base font-bold text-slate-800 hover:bg-emerald-50 hover:text-emerald-700 active:bg-emerald-50 transition-colors border border-transparent hover:border-emerald-100"
                 >
                   {item.label}
                 </a>
@@ -141,7 +141,7 @@ export const Navbar: React.FC = () => {
               <a
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="mt-2 text-center py-3 bg-emerald-600 text-white font-bold rounded-xl shadow-md"
+                className="mt-4 text-center py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold rounded-xl shadow-md shadow-emerald-600/10 active:scale-[0.99] transition-transform"
               >
                 {t.nav.admission}
               </a>
