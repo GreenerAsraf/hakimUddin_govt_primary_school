@@ -31,12 +31,12 @@ export default function Home() {
         <NoticeTicker />
         <Navbar />
         <Hero />
+        <TeachersSlideshow />
         <HeadmasterMessage />
         <CampusSlideshow />
         <DailyActivities />
         <NoticeBoard />
         <GallerySection />
-        <TeachersSlideshow />
         <TeachersSection />
         <ContactSection />
         <Footer />
