@@ -120,24 +120,36 @@ export const DeveloperShowcase: React.FC = () => {
                 </div>
 
                 {/* Direct Action Link button */}
-                <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
-                  <a
-                    href="#teachers"
-                    onClick={() => {
-                      setIsOpen(false);
-                      // Custom delay to wait for modal close, then trigger card select click
-                      setTimeout(() => {
-                        const card = document.getElementById(devData.emisId);
-                        if (card) card.scrollIntoView({ behavior: 'smooth' });
-                      }, 300);
-                    }}
-                    className="flex items-center gap-1.5 hover:text-amber-300 transition-colors font-bold group"
-                  >
-                    <span>{lang === 'bn' ? 'EMIS প্রোফাইল দেখুন' : 'View EMIS Profile'}</span>
-                    <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                  </a>
+                <div className="pt-4 border-t border-slate-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-slate-400">
+                  <div className="flex flex-wrap gap-4">
+                    <a
+                      href="#teachers"
+                      onClick={() => {
+                        setIsOpen(false);
+                        // Custom delay to wait for modal close, then trigger card select click
+                        setTimeout(() => {
+                          const card = document.getElementById(devData.emisId);
+                          if (card) card.scrollIntoView({ behavior: 'smooth' });
+                        }, 300);
+                      }}
+                      className="flex items-center gap-1.5 hover:text-amber-300 transition-colors font-bold group"
+                    >
+                      <span>{lang === 'bn' ? 'EMIS প্রোফাইল' : 'EMIS Profile'}</span>
+                      <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                    </a>
+
+                    <a
+                      href="https://my-portfolio-two-lilac-2l8xxfyjdg.vercel.app"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 hover:text-emerald-400 transition-colors font-bold group"
+                    >
+                      <span>{lang === 'bn' ? 'পোর্টফোলিও' : 'Portfolio'}</span>
+                      <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform text-emerald-400" />
+                    </a>
+                  </div>
                   
-                  <div className="flex items-center gap-1">
+                  <div className="flex items-center gap-1 self-start sm:self-auto">
                     <span>Made with</span>
                     <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500 animate-pulse" />
                   </div>
