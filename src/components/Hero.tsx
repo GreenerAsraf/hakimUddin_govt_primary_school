@@ -26,29 +26,27 @@ export const Hero: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="lg:col-span-7 space-y-6"
           >
-            <div className="inline-flex items-center gap-2 bg-emerald-100/80 text-emerald-800 border border-emerald-300 px-3.5 py-1.5 rounded-full text-xs md:text-sm font-semibold shadow-xs">
-              <ShieldCheck className="w-4 h-4 text-emerald-600" />
-              <span>{t.hero.badge}</span>
+            <div className="flex flex-wrap items-center gap-3">
+              <div className="inline-flex items-center gap-2 bg-emerald-100/80 text-emerald-800 border border-emerald-300 px-3.5 py-1.5 rounded-full text-xs md:text-sm font-semibold shadow-xs">
+                <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                <span>{t.hero.badge}</span>
+              </div>
             </div>
 
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight tracking-tight">
-              <span className="text-emerald-700 block mb-2 overflow-hidden flex flex-wrap gap-x-2">
-                {t.schoolName.split(' ').map((word: string, i: number) => (
-                  <motion.span
-                    key={i}
-                    initial={{ y: "100%", opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{
-                      duration: 0.6,
-                      delay: 0.2 + i * 0.08,
-                      ease: [0.215, 0.61, 0.355, 1]
-                    }}
-                    className="inline-block"
-                  >
-                    {word}
-                  </motion.span>
-                ))}
+            {/* School Name (Reduced Size & Animated Pill) */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="inline-flex items-center gap-2.5 bg-white/90 border border-emerald-200/90 px-4 py-2 rounded-2xl shadow-sm"
+            >
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span className="text-sm sm:text-base md:text-lg font-extrabold text-emerald-800 tracking-tight">
+                {t.schoolName}
               </span>
+            </motion.div>
+
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 leading-tight tracking-tight">
               <span className="bg-gradient-to-r from-emerald-800 via-green-700 to-amber-600 bg-clip-text text-transparent">
                 {t.hero.title}
               </span>
@@ -60,56 +58,87 @@ export const Hero: React.FC = () => {
 
             {/* Action Buttons */}
             <div className="flex flex-wrap gap-4 pt-2">
-              <a
+              <motion.a
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
                 href="#routine"
                 className="px-6 py-3.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-2xl font-bold shadow-lg shadow-emerald-700/25 hover:shadow-xl transition-all duration-200 flex items-center gap-2"
               >
                 <Calendar className="w-5 h-5 text-amber-300" />
                 <span>{t.hero.btnRoutine}</span>
-              </a>
-              <a
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
                 href="#contact"
                 className="px-6 py-3.5 bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 rounded-2xl font-bold shadow-sm hover:shadow-md transition-all duration-200 flex items-center gap-2"
               >
                 <span>{t.hero.btnContact}</span>
                 <ArrowRight className="w-4 h-4 text-emerald-600" />
-              </a>
+              </motion.a>
             </div>
 
-            {/* Quick Stats Grid */}
+            {/* Quick Stats Grid with Framer Motion animations */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 border-t border-slate-200/80">
-              <div className="p-3.5 bg-white rounded-2xl border border-emerald-100 shadow-xs">
+              <motion.div 
+                whileHover={{ y: -4, scale: 1.03 }}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.2 }}
+                className="p-3.5 bg-white rounded-2xl border border-emerald-100 shadow-xs"
+              >
                 <span className="text-2xl md:text-3xl font-extrabold text-emerald-700 block">
                   {t.hero.stats.students}
                 </span>
                 <span className="text-xs font-semibold text-slate-500">
                   {t.hero.stats.studentsLabel}
                 </span>
-              </div>
-              <div className="p-3.5 bg-white rounded-2xl border border-emerald-100 shadow-xs">
+              </motion.div>
+
+              <motion.div 
+                whileHover={{ y: -4, scale: 1.03 }}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.3 }}
+                className="p-3.5 bg-white rounded-2xl border border-emerald-100 shadow-xs"
+              >
                 <span className="text-2xl md:text-3xl font-extrabold text-emerald-700 block">
                   {t.hero.stats.teachers}
                 </span>
                 <span className="text-xs font-semibold text-slate-500">
                   {t.hero.stats.teachersLabel}
                 </span>
-              </div>
-              <div className="p-3.5 bg-white rounded-2xl border border-emerald-100 shadow-xs">
+              </motion.div>
+
+              <motion.div 
+                whileHover={{ y: -4, scale: 1.03 }}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.4 }}
+                className="p-3.5 bg-white rounded-2xl border border-emerald-100 shadow-xs"
+              >
                 <span className="text-2xl md:text-3xl font-extrabold text-emerald-700 block">
                   {t.hero.stats.classrooms}
                 </span>
                 <span className="text-xs font-semibold text-slate-500">
                   {t.hero.stats.classroomsLabel}
                 </span>
-              </div>
-              <div className="p-3.5 bg-white rounded-2xl border border-emerald-100 shadow-xs">
+              </motion.div>
+
+              <motion.div 
+                whileHover={{ y: -4, scale: 1.03 }}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.5 }}
+                className="p-3.5 bg-white rounded-2xl border border-emerald-100 shadow-xs"
+              >
                 <span className="text-2xl md:text-3xl font-extrabold text-amber-600 block">
                   {t.hero.stats.passRate}
                 </span>
                 <span className="text-xs font-semibold text-slate-500">
                   {t.hero.stats.passRateLabel}
                 </span>
-              </div>
+              </motion.div>
             </div>
 
           </motion.div>

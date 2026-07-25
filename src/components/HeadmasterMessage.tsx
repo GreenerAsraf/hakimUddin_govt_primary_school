@@ -3,6 +3,7 @@
 import React from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { Quote, UserCheck } from 'lucide-react';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 export const HeadmasterMessage: React.FC = () => {
@@ -15,19 +16,28 @@ export const HeadmasterMessage: React.FC = () => {
       <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-700/30 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-emerald-950/60 rounded-3xl p-8 md:p-12 border border-emerald-700/50 shadow-2xl backdrop-blur-md">
+        <motion.div
+          initial={{ opacity: 0, y: 30, scale: 0.98 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="bg-emerald-950/60 rounded-3xl p-8 md:p-12 border border-emerald-700/50 shadow-2xl backdrop-blur-md"
+        >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             {/* Headmaster Image Card */}
             <div className="lg:col-span-4 flex flex-col items-center text-center">
-              <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-amber-400/80 shadow-xl mb-4">
+              <motion.div 
+                whileHover={{ scale: 1.05 }}
+                className="relative w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-amber-400/80 shadow-xl mb-4"
+              >
                 <Image
                   src="/images/classroom.jpg"
                   alt={t.headmaster.name}
                   fill
                   className="object-cover"
                 />
-              </div>
+              </motion.div>
               <h3 className="text-xl font-bold text-amber-300">{t.headmaster.name}</h3>
               <p className="text-xs text-emerald-200 font-medium max-w-xs">{t.headmaster.designation}</p>
             </div>
@@ -51,13 +61,13 @@ export const HeadmasterMessage: React.FC = () => {
               </div>
 
               <div className="pt-2 flex items-center gap-3 text-xs text-emerald-300 font-semibold">
-                <span className="w-2 h-2 rounded-full bg-amber-400"></span>
+                <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
                 <span>ঘাগড়া খিলমোগল হাকিম উদ্দিন সরকারি প্রাথমিক বিদ্যালয় পরিচালনা পর্ষদ</span>
               </div>
             </div>
 
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

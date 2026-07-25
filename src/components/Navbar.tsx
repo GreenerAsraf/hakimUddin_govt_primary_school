@@ -39,10 +39,10 @@ export const Navbar: React.FC = () => {
               />
             </motion.div>
             <div className="flex flex-col">
-              <span className="font-bold text-slate-800 text-base md:text-lg leading-tight group-hover:text-emerald-700 transition-colors">
+              <span className="font-extrabold text-slate-800 text-xs sm:text-sm md:text-base leading-tight group-hover:text-emerald-700 transition-colors line-clamp-1">
                 {t.schoolName}
               </span>
-              <span className="text-xs text-emerald-600 font-medium tracking-wide">
+              <span className="text-[11px] sm:text-xs text-emerald-600 font-medium tracking-wide">
                 {t.subTitle}
               </span>
             </div>
