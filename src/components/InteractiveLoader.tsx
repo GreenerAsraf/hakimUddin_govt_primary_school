@@ -116,6 +116,30 @@ export const InteractiveLoader: React.FC<InteractiveLoaderProps> = ({ onComplete
             >
               {t.subTitle}
             </motion.p>
+
+            {/* School Code / EMIS Badges */}
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.6, duration: 0.6 }}
+              className="flex flex-wrap items-center justify-center gap-2 pt-1"
+            >
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-950/70 border border-emerald-800/60 text-[10px] font-bold text-emerald-400 tracking-wide"
+              >
+                <span className="text-slate-500">{lang === 'bn' ? 'স্কুল কোড' : 'School Code'}</span>
+                &nbsp;১৪০১১৯
+              </span>
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-amber-950/60 border border-amber-800/50 text-[10px] font-bold text-amber-400 tracking-wide"
+              >
+                <span className="text-slate-500">{lang === 'bn' ? 'ইএমআইএস' : 'EMIS'}</span>
+                &nbsp;৯১৪১১১২০৩০২
+              </span>
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700/60 text-[10px] font-bold text-slate-300 tracking-wide"
+              >
+                <span className="text-slate-500">{lang === 'bn' ? 'স্থাপিত' : 'ESTD'}</span>
+                &nbsp;১৯৬৮
+              </span>
+            </motion.div>
           </div>
 
         </div>

@@ -52,7 +52,7 @@ export const translations = {
   bn: {
     schoolName: "ঘাগড়া খিলমোগল হাকিম উদ্দিন সরকারি প্রাথমিক বিদ্যালয়",
     shortName: "ঘাগড়া খিলমোগল সঃ প্রাঃ বিঃ",
-    subTitle: "স্থাপিত: ১৯৭৫ | ইআইআইএন (EIIN): ১৩৪৫৮২",
+    subTitle: "স্থাপিত: ১৯৬৮ | স্কুল কোড: ১৪০১১৯ | ইএমআইএস: ৯১৪১১১২০৩০২",
     tagline: "সুশিক্ষা ও নৈতিকতার আলোয় আলোকিত ভবিষ্যৎ গড়ার অঙ্গীকার",
     nav: {
       home: "প্রথম পাতা",
@@ -150,7 +150,7 @@ export const translations = {
   en: {
     schoolName: "Ghagra Khilmogal Hakim Uddin Government Primary School",
     shortName: "Ghagra Khilmogal GPS",
-    subTitle: "ESTD: 1968 | EIIN: 134582",
+    subTitle: "ESTD: 1968 | School Code: 140119 | EMIS: 914111203027",
     tagline: "Committed to building a bright future with quality education and morals",
     nav: {
       home: "Home",
