@@ -503,7 +503,7 @@ export const teachersList: Teacher[] = [
     nameEn: "PRIYA DEB",
     designationBn: "সহকারী শিক্ষক (সক্রিয়)",
     designationEn: "Assistant Teacher (Active)",
-    qualificationBn: "বি.এস-সি,",
+    qualificationBn: "বি.এস-সি",
     qualificationEn: "B.Sc",
     image: "/images/teachers/priya_deb.jpg",
     pinNumber: "1401190001",
