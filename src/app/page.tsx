@@ -1,20 +1,48 @@
 'use client';
 
 import React, { useState } from "react";
+import dynamic from "next/dynamic";
+
+// ── ABOVE THE FOLD: load eagerly ──────────────────────────────
 import { NoticeTicker } from "@/components/NoticeTicker";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
-import { HeadmasterMessage } from "@/components/HeadmasterMessage";
-import { CampusSlideshow } from "@/components/CampusSlideshow";
-import { DailyActivities } from "@/components/DailyActivities";
-import { NoticeBoard } from "@/components/NoticeBoard";
-import { GallerySection } from "@/components/GallerySection";
-import { TeachersSection } from "@/components/TeachersSection";
-import { TeachersSlideshow } from "@/components/TeachersSlideshow";
-import { ContactSection } from "@/components/ContactSection";
-import { Footer } from "@/components/Footer";
 import { InteractiveLoader } from "@/components/InteractiveLoader";
 import { AnimatePresence } from "framer-motion";
+
+// ── BELOW THE FOLD: lazy-load (split into separate JS chunks) ─
+const TeachersSlideshow = dynamic(
+  () => import("@/components/TeachersSlideshow").then(m => ({ default: m.TeachersSlideshow })),
+  { ssr: false }
+);
+const HeadmasterMessage = dynamic(
+  () => import("@/components/HeadmasterMessage").then(m => ({ default: m.HeadmasterMessage }))
+);
+const CampusSlideshow = dynamic(
+  () => import("@/components/CampusSlideshow").then(m => ({ default: m.CampusSlideshow })),
+  { ssr: false }
+);
+const DailyActivities = dynamic(
+  () => import("@/components/DailyActivities").then(m => ({ default: m.DailyActivities })),
+  { ssr: false }
+);
+const NoticeBoard = dynamic(
+  () => import("@/components/NoticeBoard").then(m => ({ default: m.NoticeBoard }))
+);
+const GallerySection = dynamic(
+  () => import("@/components/GallerySection").then(m => ({ default: m.GallerySection })),
+  { ssr: false }
+);
+const TeachersSection = dynamic(
+  () => import("@/components/TeachersSection").then(m => ({ default: m.TeachersSection })),
+  { ssr: false }
+);
+const ContactSection = dynamic(
+  () => import("@/components/ContactSection").then(m => ({ default: m.ContactSection }))
+);
+const Footer = dynamic(
+  () => import("@/components/Footer").then(m => ({ default: m.Footer }))
+);
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
