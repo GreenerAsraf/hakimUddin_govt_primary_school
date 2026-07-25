@@ -10,6 +10,7 @@ import { DailyActivities } from "@/components/DailyActivities";
 import { NoticeBoard } from "@/components/NoticeBoard";
 import { GallerySection } from "@/components/GallerySection";
 import { TeachersSection } from "@/components/TeachersSection";
+import { TeachersSlideshow } from "@/components/TeachersSlideshow";
 import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
 import { InteractiveLoader } from "@/components/InteractiveLoader";
@@ -35,6 +36,7 @@ export default function Home() {
         <DailyActivities />
         <NoticeBoard />
         <GallerySection />
+        <TeachersSlideshow />
         <TeachersSection />
         <ContactSection />
         <Footer />
