@@ -94,10 +94,28 @@ export const Navbar: React.FC = () => {
               <Globe className="w-3.5 h-3.5" />
               <span>{t.nav.admission}</span>
             </a>
+
+            {/* Developer Tag Badge */}
+            <span 
+              onClick={() => window.dispatchEvent(new CustomEvent('open-dev-profile'))}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 border border-slate-700 text-amber-300 rounded-full text-[10px] font-extrabold uppercase tracking-wider shadow-xs hover:border-amber-400 transition-colors cursor-pointer select-none"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+              <span>Dev Profile</span>
+            </span>
           </div>
 
           {/* Mobile Menu Toggle button */}
           <div className="flex lg:hidden items-center gap-2">
+            {/* Developer Tag Badge Mobile */}
+            <span 
+              onClick={() => window.dispatchEvent(new CustomEvent('open-dev-profile'))}
+              className="inline-flex items-center gap-1.5 px-2 py-1 bg-slate-900 border border-slate-800 text-amber-300 rounded-full text-[9px] font-extrabold uppercase tracking-wider cursor-pointer"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>Dev</span>
+            </span>
+
             {/* Language Toggle Mobile */}
             <button
               onClick={() => setLang(lang === 'bn' ? 'en' : 'bn')}

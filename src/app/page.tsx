@@ -7,6 +7,7 @@ import dynamic from "next/dynamic";
 import { NoticeTicker } from "@/components/NoticeTicker";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
+import { DeveloperShowcase } from "@/components/DeveloperShowcase";
 import { InteractiveLoader } from "@/components/InteractiveLoader";
 import { AnimatePresence } from "framer-motion";
 
@@ -68,6 +69,7 @@ export default function Home() {
         <TeachersSection />
         <ContactSection />
         <Footer />
+        <DeveloperShowcase />
       </main>
     </>
   );
