@@ -516,56 +516,113 @@ const TeacherCard: React.FC<TeacherCardProps> = ({
   const designation = isBn ? teacher.designationBn : teacher.designationEn;
   const qualification = isBn ? teacher.qualificationBn : teacher.qualificationEn;
 
+  const cardThemes = [
+    {
+      bgBase: 'from-emerald-50/50 via-emerald-50/20 to-emerald-50/50',
+      bgHover: 'from-emerald-100 via-emerald-50 to-emerald-100',
+      border: 'border-emerald-400',
+      shadow: 'hover:shadow-emerald-500/20',
+      tag: 'text-emerald-700 bg-emerald-100/50 border-emerald-200',
+    },
+    {
+      bgBase: 'from-blue-50/50 via-blue-50/20 to-blue-50/50',
+      bgHover: 'from-blue-100 via-blue-50 to-blue-100',
+      border: 'border-blue-400',
+      shadow: 'hover:shadow-blue-500/20',
+      tag: 'text-blue-700 bg-blue-100/50 border-blue-200',
+    },
+    {
+      bgBase: 'from-purple-50/50 via-purple-50/20 to-purple-50/50',
+      bgHover: 'from-purple-100 via-purple-50 to-purple-100',
+      border: 'border-purple-400',
+      shadow: 'hover:shadow-purple-500/20',
+      tag: 'text-purple-700 bg-purple-100/50 border-purple-200',
+    },
+    {
+      bgBase: 'from-amber-50/50 via-amber-50/20 to-amber-50/50',
+      bgHover: 'from-amber-100 via-amber-50 to-amber-100',
+      border: 'border-amber-400',
+      shadow: 'hover:shadow-amber-500/20',
+      tag: 'text-amber-700 bg-amber-100/50 border-amber-200',
+    },
+    {
+      bgBase: 'from-rose-50/50 via-rose-50/20 to-rose-50/50',
+      bgHover: 'from-rose-100 via-rose-50 to-rose-100',
+      border: 'border-rose-400',
+      shadow: 'hover:shadow-rose-500/20',
+      tag: 'text-rose-700 bg-rose-100/50 border-rose-200',
+    },
+    {
+      bgBase: 'from-cyan-50/50 via-cyan-50/20 to-cyan-50/50',
+      bgHover: 'from-cyan-100 via-cyan-50 to-cyan-100',
+      border: 'border-cyan-400',
+      shadow: 'hover:shadow-cyan-500/20',
+      tag: 'text-cyan-700 bg-cyan-100/50 border-cyan-200',
+    },
+  ];
+  const theme = cardThemes[index % cardThemes.length];
+
   return (
     <motion.button
       initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.45, delay: index * 0.07 }}
-      whileHover={{ y: -6, scale: 1.025 }}
+      whileHover={{ y: -6 }}
       onClick={onClick}
-      className="group w-full bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col items-center text-center cursor-pointer focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2"
+      className={`group relative w-full rounded-3xl p-6 shadow-sm ${theme.shadow} hover:shadow-xl transition-all duration-500 flex flex-col items-center text-center cursor-pointer focus:outline-none`}
     >
-      {/* Avatar */}
-      <div className="relative w-28 h-28 rounded-2xl overflow-hidden mb-4 ring-2 ring-slate-200 group-hover:ring-emerald-300 transition-all duration-300 shadow-md">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={imageSrc}
-          alt={name}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          onError={(e) => {
-            (e.currentTarget as HTMLImageElement).src = teacher.image;
-          }}
-        />
-        {/* Active dot */}
-        <span className="absolute bottom-1.5 right-1.5 w-3.5 h-3.5 bg-emerald-500 rounded-full border-2 border-white shadow" />
-        {/* Custom photo indicator */}
-        {hasOverride && (
-          <div className="absolute top-1.5 left-1.5 bg-emerald-500 rounded-full px-1.5 py-0.5 flex items-center gap-0.5">
-            <Camera className="w-2.5 h-2.5 text-white" />
-          </div>
-        )}
-      </div>
+      {/* Background base */}
+      <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${theme.bgBase} border border-slate-200/80 transition-opacity duration-500 z-0`} />
+      {/* Background hover */}
+      <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${theme.bgHover} opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0`} />
+      
+      {/* Animated Border overlay */}
+      <div className={`absolute inset-0 rounded-3xl border-2 ${theme.border} opacity-0 group-hover:opacity-100 scale-[1.03] group-hover:scale-100 transition-all duration-500 pointer-events-none z-10`} />
 
-      <h3 className="text-base font-bold text-slate-900 group-hover:text-emerald-700 transition-colors leading-tight">
-        {name}
-      </h3>
-      <span className="mt-2 text-[11px] font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
-        {designation.replace(' (সক্রিয়)', '').replace(' (Active)', '')}
-      </span>
-      <p className="mt-3 text-xs text-slate-500 font-medium flex items-center gap-1.5">
-        <Award className="w-3.5 h-3.5 text-amber-500 flex-shrink-0" />
-        <span>{qualification}</span>
-      </p>
-
-      <div className="w-full mt-4 pt-4 border-t border-slate-100 flex items-center justify-between text-slate-400">
-        <div className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-500">
-          <Hash className="w-3.5 h-3.5" />
-          <span className="truncate max-w-[120px]">{teacher.pinNumber}</span>
+      {/* Content wrapper */}
+      <div className="relative z-10 w-full flex flex-col items-center">
+        {/* Avatar */}
+        <div className="relative w-28 h-28 rounded-2xl overflow-hidden mb-4 ring-2 ring-white/50 group-hover:ring-white transition-all duration-300 shadow-md">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={imageSrc}
+            alt={name}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            onError={(e) => {
+              (e.currentTarget as HTMLImageElement).src = teacher.image;
+            }}
+          />
+          {/* Active dot */}
+          <span className="absolute bottom-1.5 right-1.5 w-3.5 h-3.5 bg-emerald-500 rounded-full border-2 border-white shadow" />
+          {/* Custom photo indicator */}
+          {hasOverride && (
+            <div className="absolute top-1.5 left-1.5 bg-emerald-500 rounded-full px-1.5 py-0.5 flex items-center gap-0.5">
+              <Camera className="w-2.5 h-2.5 text-white" />
+            </div>
+          )}
         </div>
-        <span className="text-[11px] font-bold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
-          {isBn ? 'বিস্তারিত' : 'Details'} →
+
+        <h3 className="text-base font-bold text-slate-900 transition-colors leading-tight">
+          {name}
+        </h3>
+        <span className={`mt-2 text-[11px] font-bold px-3 py-1 rounded-full border ${theme.tag}`}>
+          {designation.replace(' (সক্রিয়)', '').replace(' (Active)', '')}
         </span>
+        <p className="mt-3 text-xs text-slate-600 font-medium flex items-center gap-1.5">
+          <Award className="w-3.5 h-3.5 text-amber-500 flex-shrink-0" />
+          <span>{qualification}</span>
+        </p>
+
+        <div className="w-full mt-4 pt-4 border-t border-black/5 flex items-center justify-between text-slate-500">
+          <div className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-600">
+            <Hash className="w-3.5 h-3.5" />
+            <span className="truncate max-w-[120px]">{teacher.pinNumber}</span>
+          </div>
+          <span className="text-[11px] font-bold text-slate-700 bg-white/60 px-2.5 py-0.5 rounded-full border border-white group-hover:bg-slate-800 group-hover:text-white transition-colors">
+            {isBn ? 'বিস্তারিত' : 'Details'} →
+          </span>
+        </div>
       </div>
     </motion.button>
   );

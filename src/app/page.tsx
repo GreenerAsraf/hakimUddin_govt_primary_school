@@ -16,6 +16,9 @@ const TeachersSlideshow = dynamic(
   () => import("@/components/TeachersSlideshow").then(m => ({ default: m.TeachersSlideshow })),
   { ssr: false }
 );
+const FormerTeachers = dynamic(
+  () => import("@/components/FormerTeachers").then(m => ({ default: m.FormerTeachers }))
+);
 const HeadmasterMessage = dynamic(
   () => import("@/components/HeadmasterMessage").then(m => ({ default: m.HeadmasterMessage }))
 );
@@ -61,6 +64,7 @@ export default function Home() {
         <Navbar />
         <Hero />
         <TeachersSlideshow />
+        <FormerTeachers />
         <HeadmasterMessage />
         <CampusSlideshow />
         <DailyActivities />
